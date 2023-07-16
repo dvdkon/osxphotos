@@ -39,6 +39,8 @@ class QueryOptions:
         deleted: also include deleted photos
         description: list of descriptions to search for
         duplicate: search for duplicate photos
+        duplicate_in: search for photos also in another DB
+        no_duplicate_in: search for photos notalso in another DB
         edited: search for edited photos
         exif: search for photos with EXIF tags that matches the given data
         external_edit: search for photos edited in external apps
@@ -125,6 +127,8 @@ class QueryOptions:
     deleted: Optional[bool] = None
     description: Optional[Iterable[str]] = None
     duplicate: Optional[bool] = None
+    duplicate_in: Optional[str] = None
+    no_duplicate_in: Optional[str] = None
     edited: Optional[bool] = None
     exif: Optional[Iterable[Tuple[str, str]]] = None
     external_edit: Optional[bool] = None
@@ -252,6 +256,7 @@ def query_options_from_kwargs(**kwargs) -> QueryOptions:
         ("hdr", "not_hdr"),
         ("hidden", "not_hidden"),
         ("in_album", "not_in_album"),
+        ("duplicate_in", "no_duplicate_in"),
         ("incloud", "not_incloud"),
         ("is_reference", "not_reference"),
         ("keyword", "no_keyword"),

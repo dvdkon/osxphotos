@@ -545,6 +545,18 @@ _QUERY_PARAMETERS_DICT = {
         "This does not compare images byte-for-byte nor compare hashes but should find photos imported multiple "
         "times or duplicated within Photos.",
     ),
+    "--duplicate-in": click.Option(
+        ["--duplicate-in"],
+        metavar="DB",
+        help="Search for photos which are also present in another library. "
+        "Uses the same matching algorithm as --duplicate",
+    ),
+    "--no-duplicate-in": click.Option(
+        ["--no-duplicate-in"],
+        metavar="DB",
+        help="Search for photos which are not also present in another library. "
+        "Uses the same matching algorithm as --duplicate",
+    ),
     "--min-size": click.Option(
         ["--min-size"],
         metavar="SIZE",

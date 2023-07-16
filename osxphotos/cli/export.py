@@ -761,6 +761,8 @@ def export(
     download_missing,
     dry_run,
     duplicate,
+    duplicate_in,
+    no_duplicate_in,
     edited,
     edited_suffix,
     exif,
@@ -986,6 +988,8 @@ def export(
         download_missing = cfg.download_missing
         dry_run = cfg.dry_run
         duplicate = cfg.duplicate
+        duplicate_in = cfg.duplicate_in
+        no_duplicate_in = cfg.no_duplicate_in
         edited = cfg.edited
         edited_suffix = cfg.edited_suffix
         exif = cfg.exif

@@ -3458,6 +3458,21 @@ class PhotosDB:
             if options.deleted_only:
                 photos = [p for p in photos if p.intrash]
 
+        if options.duplicate_in or options.no_duplicate_in:
+            other_db_path = options.duplicate_in or options.no_duplicate_in
+            try:
+                other_db = PhotosDB(other_db_path)
+            except FileNotFoundError:
+                raise ValueError(f"Database for duplicate filter not found: {other_db_path}")
+            signatures = {other_db._duplicate_signature(p.uuid)
+                          for p in other_db.photos()}
+            if options.duplicate_in:
+                photos = [p for p in photos
+                          if self._duplicate_signature(p.uuid) in signatures]
+            else:
+                photos = [p for p in photos
+                          if self._duplicate_signature(p.uuid) not in signatures]
+
         if options.location:
             photos = [p for p in photos if p.location != (None, None)]
         elif options.no_location:
