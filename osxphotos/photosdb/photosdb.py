@@ -3587,7 +3587,6 @@ class PhotosDB:
             self._dbphotos[uuid]["height"],
             self._dbphotos[uuid]["width"],
             self._dbphotos[uuid]["UTI"],
-            self._dbphotos[uuid]["hasAdjustments"],
         )
 
     def __repr__(self):
